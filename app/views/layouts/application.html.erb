@@ -10,13 +10,19 @@
 
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-
         <ul class="nav">
           <li class="navbar-left"><a class="navbar-link" href="#">Home</a></li>
           <li class="navbar-left"><%= link_to "All Statuses", statuses_path, :class => "navbar-link" %></li>
+          <% if user_signed_in? %>
+            <li class="navbar-right"><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "navbar-link" %></li>
+            <li class="navbar-right"><%= link_to current_user.full_name, edit_user_registration_path, :class => "navbar-link" %></li>
+          <% else %>
+            <li class="navbar-right"><%= link_to "Log In", new_user_session_path, :class => "navbar-link" %></li>
+            <li class="navbar-right"><%= link_to "Register", new_user_registration_path, :class => "navbar-link" %></li>
+
+          <% end %>
         </ul>
       </div><!--container-->
-
   </div><!--navbar-->
 
   <div class="container">
