@@ -4,6 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :profile_name, presence: true,
+                           uniqueness: true,
+                           format: {
+                             with: /\A[a-zA-Z\-\_]+\Z/,
+                             message: "Must be formatted correctly."
+                           }
+
+
   has_many :statuses, dependent: :destroy
   accepts_nested_attributes_for :statuses, allow_destroy: true
 
