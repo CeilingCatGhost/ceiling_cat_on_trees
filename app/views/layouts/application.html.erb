@@ -28,18 +28,11 @@
   <div class="container">
     <!--<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>-->
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
+    <% flash.each do |type, message| %>
+      <div class="alert <%= flash_class type %>">
         <button class="close" data-dismiss="alert">X</button>
-        <%= flash[:notice] %>
-      </div><!--alert alert-success-->
-    <% end %>
-
-    <% if flash[:alert] %>
-      <div class="alert alert-error">
-        <button class="close" data-dismiss="alert">X</button>
-        <%= flash[:alert] %>
-      </div><!-- alert alert-error-->
+        <%= message %>
+      </div><!--alert-->
     <% end %>
 
     <%= yield %>

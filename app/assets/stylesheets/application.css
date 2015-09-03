@@ -18,6 +18,10 @@
    padding-top: 50px;
  }
 
+ .alert {
+   margin-top: 10px;
+ }
+
 .navbar {
   border-bottom: solid 2px #23527c;
   font-size: 1.5em;
